@@ -6,6 +6,7 @@ const resetBtn=document.querySelector('#reset')
 const dimCont=document.querySelector('#dimensions')
 const colorButtons=document.querySelectorAll('#buttons button')
 
+
 window.addEventListener('load',setField(16))
 btnInput.addEventListener('input',setupField)
 
@@ -19,11 +20,15 @@ colorButtons.forEach((btn)=>{
     
 })
 
+function putColor(e){
+    if(e.buttons === 1){
+        setColor(getColor(),e.target)
+    }
+}
 function setupField(){
-    cont.textContent=''
-    color=getColor()
-    size=getGridSize()
-    setField(size,color)
+    cont.textContent='';
+    size=getGridSize();
+    setField(size);
 }
 
 resetBtn.addEventListener('click',resetField)
@@ -41,7 +46,7 @@ function getGridSize(){
     console.log(size)
     return size
 }
-function setField(val,color){
+function setField(val){
     dimCont.textContent=`${val}X${val}`;
     for(let i=0;i<val;i++){
         let row=document.createElement('div')
@@ -52,9 +57,7 @@ function setField(val,color){
             let pixel=document.createElement('div')
             console.log(val)
             pixel.setAttribute('style',`width:${size}px;`)
-            pixel.addEventListener('mouseover',()=>{
-            setColor(color,pixel);
-            })
+            pixel.addEventListener('mouseover',putColor)
             row.appendChild(pixel)}
         cont.appendChild(row)
     }
