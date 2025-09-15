@@ -1,27 +1,44 @@
 const cont=document.querySelector('#container')
 const btn=document.querySelector('#add')
+const resetBtn=document.querySelector('#reset')
 btn.addEventListener('input',()=>{
     cont.textContent=''
-    changeField(btn.value)
+    setField(btn.value)
 })
+resetBtn.addEventListener('click',resetField)
 
-function changeField(val){
+function setField(val){
     for(let i=0;i<val;i++){
         let row=document.createElement('div')
         row.classList.add('row')
-        let size=Math.ceil(980/val)
+        let size=Math.ceil(540/val)
         row.setAttribute('style',`height:${size}px;padding:0;margin:0;`)
         for(let j=0;j<val;j++){
             let pixel=document.createElement('div')
             console.log(val)
-            pixel.setAttribute('style',`width:${size}px;heigh:${size}px`)
+            pixel.setAttribute('style',`width:${size}px;`)
             pixel.addEventListener('mouseover',()=>{
-                pixel.style.backgroundColor='black'
+            pixel.style.backgroundColor='black'
             })
             row.appendChild(pixel)}
         cont.appendChild(row)
     }
 }
-function showGrid(element){
-    element.style
+function resetField(){
+    let contAll=document.querySelectorAll('#container .row')
+    console.log(contAll)
+    contAll.forEach(()=>{
+        let rowCont=document.querySelectorAll('.row div')
+        rowCont.forEach((elem)=>{
+            elem.style.backgroundColor='white';
+        })
+    })
+
+}
+function setColor(){
+    const randNum=Math.floor(Math.random()*0xFFFFFF);
+    let hexColor = randomNum.toString(16);
+    hexColor = hexColor.padStart(6, '0');
+
+    return `#${hexColor}`
 }
