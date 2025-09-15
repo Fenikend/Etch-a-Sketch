@@ -25,13 +25,11 @@ function setField(val){
     }
 }
 function resetField(){
-    let contAll=document.querySelectorAll('#container .row')
-    console.log(contAll)
-    contAll.forEach(()=>{
-        let rowCont=document.querySelectorAll('.row div')
-        rowCont.forEach((elem)=>{
-            elem.style.backgroundColor='white';
-        })
+    let cells=document.querySelectorAll('#container .row div')
+    console.log(cells)
+    cells.forEach((elem)=>{
+        elem.style.backgroundColor='white';
+    
     })
 
 }
