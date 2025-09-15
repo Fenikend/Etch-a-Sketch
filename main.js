@@ -1,6 +1,9 @@
 const cont=document.querySelector('#container')
 const btn=document.querySelector('#add')
 const resetBtn=document.querySelector('#reset')
+const dimcont=document.querySelector('#dimensions')
+
+window.addEventListener('load',setField(16))
 btn.addEventListener('input',()=>{
     cont.textContent=''
     setField(btn.value)
@@ -8,6 +11,7 @@ btn.addEventListener('input',()=>{
 resetBtn.addEventListener('click',resetField)
 
 function setField(val){
+    dimcont.textContent=`${val}X${val}`;
     for(let i=0;i<val;i++){
         let row=document.createElement('div')
         row.classList.add('row')
