@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container" id="container">
-    </div>
+    <div class="container" id="container"></div>
+    <p id="dimensions"></p>
     <input 
     type="range"
     id="grid-input"
@@ -19,7 +19,12 @@
     step="1"
     >
     <label for="dimensions">Dimensions</label>
-    
+    <div class="buttons" id="buttons">
+        <!-- stylish class is a placeholder for buttons styling-->
+        <button class='stylish active'id="black-button">BLACK</button>
+        <button class='stylish'id="rgb-button">RGB</button>
+    </div>
+    <button id="reset">RESET</button>
     <script src="main.js"></script>
 </body>
 </html>
