@@ -1,7 +1,7 @@
 const FIELD_SIZE=540
 
 const cont=document.querySelector('#container')
-const btnInput=document.querySelector('#add')
+const btnInput=document.querySelector('#grid-input')
 const resetBtn=document.querySelector('#reset')
 const dimCont=document.querySelector('#dimensions')
 const colorButtons=document.querySelectorAll('#buttons button')
@@ -56,8 +56,12 @@ function setField(val){
         for(let j=0;j<val;j++){
             let pixel=document.createElement('div')
             console.log(val)
+            pixel.ondragstart = (e) => e.preventDefault();
             pixel.setAttribute('style',`width:${size}px;`)
             pixel.addEventListener('mouseover',putColor)
+            pixel.addEventListener('mousedown',(e)=>{
+                if (e.button===0) setColor(getColor(),e.target)
+            })
             row.appendChild(pixel)}
         cont.appendChild(row)
         console.log(val)
