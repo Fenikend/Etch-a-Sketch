@@ -9,8 +9,15 @@ const colorButtons=document.querySelectorAll('#buttons button')
 const colorPalette=document.querySelector('#color-palette')
 const eraseButton=document.querySelector('#eraser-button')
 
-colorPalettez
+//event listeners to change coloros with palette element
+colorPalette.addEventListener("input", putColor, false);
+colorPalette.addEventListener("change", putColor, false);
+//event listener to assure that if we chosen some color buttons will be inactive
+colorPalette.addEventListener('change',()=>{
+        colorButtons.forEach((b)=>b.classList.remove('active'))
+})
 
+//on load event
 window.addEventListener('load',setField(16))
 btnInput.addEventListener('input',setupField)
 
@@ -18,12 +25,13 @@ colorButtons.forEach((btn)=>{
     btn.addEventListener('click',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
         btn.classList.add('active')
+        colorPalette.value=''
        // setupField()
     })
     
     
 })
-//function to add drag-n-click support
+//function to add drag-n-click support with event handling
 function putColor(e){
     if(e.buttons === 1){
         setColor(getColor(),e.target)
@@ -37,17 +45,27 @@ function setupField(){
 
 resetBtn.addEventListener('click',resetField)
 
+
 function getColor(){
+    let color
+    //change color of cursor if button active have higher priority
     for(btn of colorButtons){
         if (btn.classList.contains('active')){
-            let color=btn.id.split('-')[0]
+            color=btn.id.split('-')[0]
             console.log(color)
             return color
+        }
         
     }
+    if(colorPalette.value){
+        color=colorPalette.value
+        return color
     }
-    return color 
+   
+    
+        
 }
+
 function getGridSize(){
     let size=btnInput.value
     console.log(size)
