@@ -22,6 +22,14 @@ body{
     width: 100%;
     
 }
+.pixel{
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.active{
+    background-color: aquamarine;
+}
 #add{
     flex-grow: 0;
 }

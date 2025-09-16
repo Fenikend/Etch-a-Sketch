@@ -1,11 +1,15 @@
 const FIELD_SIZE=540
+const ERASER_COLOR='white'
 
 const cont=document.querySelector('#container')
 const btnInput=document.querySelector('#grid-input')
 const resetBtn=document.querySelector('#reset')
 const dimCont=document.querySelector('#dimensions')
 const colorButtons=document.querySelectorAll('#buttons button')
+const colorPalette=document.querySelector('#color-palette')
+const eraseButton=document.querySelector('#eraser-button')
 
+colorPalettez
 
 window.addEventListener('load',setField(16))
 btnInput.addEventListener('input',setupField)
@@ -14,12 +18,12 @@ colorButtons.forEach((btn)=>{
     btn.addEventListener('click',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
         btn.classList.add('active')
-        setupField()
+       // setupField()
     })
     
     
 })
-
+//function to add drag-n-click support
 function putColor(e){
     if(e.buttons === 1){
         setColor(getColor(),e.target)
@@ -32,13 +36,16 @@ function setupField(){
 }
 
 resetBtn.addEventListener('click',resetField)
+
 function getColor(){
     for(btn of colorButtons){
         if (btn.classList.contains('active')){
             let color=btn.id.split('-')[0]
             console.log(color)
             return color
-    }}
+        
+    }
+    }
     return color 
 }
 function getGridSize(){
@@ -48,21 +55,29 @@ function getGridSize(){
 }
 function setField(val){
     dimCont.textContent=`${val}X${val}`;
+    let size=Math.ceil(FIELD_SIZE/val)
+    
     for(let i=0;i<val;i++){
-        let row=document.createElement('div')
-        row.classList.add('row')
-        let size=Math.ceil(FIELD_SIZE/val)
-        row.setAttribute('style',`height:${size}px;padding:0;margin:0;`)
+
+        const row=document.createElement('div');
+        row.classList.add('row');
+        row.style.height=`${size}px`;
+       
+
         for(let j=0;j<val;j++){
-            let pixel=document.createElement('div')
-            console.log(val)
-            pixel.ondragstart = (e) => e.preventDefault();
-            pixel.setAttribute('style',`width:${size}px;`)
+
+            const pixel=document.createElement('div');
+            console.log(val);
+            pixel.style.width=`${size}px`;
+
+
+            // drawing events
             pixel.addEventListener('mouseover',putColor)
             pixel.addEventListener('mousedown',(e)=>{
                 if (e.button===0) setColor(getColor(),e.target)
             })
             row.appendChild(pixel)}
+
         cont.appendChild(row)
         console.log(val)
     }
@@ -88,6 +103,9 @@ function generateColor(){
 function setColor(color,elem){
     if(color==='rgb'){
         elem.style.backgroundColor=generateColor();
+    }
+    else if(color==='eraser'){
+         elem.style.backgroundColor=ERASER_COLOR
     }
     else{
         elem.style.backgroundColor=color
