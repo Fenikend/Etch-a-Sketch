@@ -8,18 +8,24 @@ const dimCont=document.querySelector('#dimensions')
 const colorButtons=document.querySelectorAll('#buttons button')
 const colorPalette=document.querySelector('#color-palette')
 const eraseButton=document.querySelector('#eraser-button')
+const borderButton=document.querySelector('#borders')
 
 //event listeners to change coloros with palette element
 colorPalette.addEventListener("input", putColor, false);
 colorPalette.addEventListener("change", putColor, false);
 //event listener to assure that if we chosen some color buttons will be inactive
-colorPalette.addEventListener('change',()=>{
+colorPalette.addEventListener('input',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
 })
 
 //on load event
 window.addEventListener('load',setField(16))
 btnInput.addEventListener('input',setupField)
+borderButton.addEventListener('click',()=>{
+    borderButton.classList.toggle('active')
+    toggleBorders()
+}
+)
 
 colorButtons.forEach((btn)=>{
     btn.addEventListener('click',()=>{
@@ -41,6 +47,10 @@ function setupField(){
     cont.textContent='';
     size=getGridSize();
     setField(size);
+    if(borderButton.classList.contains('active')){
+        console.log(borderButton.classList.contains('active'))
+        toggleBorders()
+    }
 }
 
 resetBtn.addEventListener('click',resetField)
@@ -85,7 +95,6 @@ function setField(val){
         for(let j=0;j<val;j++){
 
             const pixel=document.createElement('div');
-            console.log(val);
             pixel.style.width=`${size}px`;
 
 
@@ -97,7 +106,6 @@ function setField(val){
             row.appendChild(pixel)}
 
         cont.appendChild(row)
-        console.log(val)
     }
 }
 function resetField(){
@@ -123,11 +131,27 @@ function setColor(color,elem){
         elem.style.backgroundColor=generateColor();
     }
     else if(color==='eraser'){
-         elem.style.backgroundColor=ERASER_COLOR
+         elem.style.backgroundColor=ERASER_COLOR;
     }
     else{
-        elem.style.backgroundColor=color
+        elem.style.backgroundColor=color;
     }
     
 
 }
+function toggleBorders(){
+    let cells =document.querySelectorAll('#container .row div');
+        
+    if(borderButton.classList.contains('active')){
+        for (d of cells){
+        d.style.border='1px solid black';
+    }}
+    else{
+        for (d of cells){
+        d.style.border='none';
+    }}
+}
+   
+
+    
+
