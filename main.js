@@ -13,6 +13,7 @@ const borderButton=document.querySelector('#borders')
 //event listeners to change coloros with palette element
 colorPalette.addEventListener("input", putColor, false);
 colorPalette.addEventListener("change", putColor, false);
+
 //event listener to assure that if we chosen some color buttons will be inactive
 colorPalette.addEventListener('input',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
@@ -20,40 +21,49 @@ colorPalette.addEventListener('input',()=>{
 
 //on load event
 window.addEventListener('load',setField(16))
+
+//es to setup field when field size change
 btnInput.addEventListener('input',setupField)
+
+//toggle borders
 borderButton.addEventListener('click',()=>{
     borderButton.classList.toggle('active')
     toggleBorders()
 }
 )
 
+//check every button class and change color based on it(rgb,eraser)
 colorButtons.forEach((btn)=>{
     btn.addEventListener('click',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
         btn.classList.add('active')
         colorPalette.value=''
-       // setupField()
     })
     
     
 })
+
+//reset field
+resetBtn.addEventListener('click',resetField)
+
 //function to add drag-n-click support with event handling
 function putColor(e){
     if(e.buttons === 1){
         setColor(getColor(),e.target)
     }
 }
+
+//main function to setup field
 function setupField(){
     cont.textContent='';
     size=getGridSize();
     setField(size);
     if(borderButton.classList.contains('active')){
-        console.log(borderButton.classList.contains('active'))
         toggleBorders()
     }
 }
 
-resetBtn.addEventListener('click',resetField)
+
 
 
 function getColor(){
@@ -78,9 +88,9 @@ function getColor(){
 
 function getGridSize(){
     let size=btnInput.value
-    console.log(size)
     return size
 }
+
 function setField(val){
     dimCont.textContent=`${val}X${val}`;
     let size=Math.ceil(FIELD_SIZE/val)
@@ -108,15 +118,16 @@ function setField(val){
         cont.appendChild(row)
     }
 }
+
 function resetField(){
     let cells=document.querySelectorAll('#container .row div')
-    console.log(cells)
     cells.forEach((elem)=>{
         setColor('white',elem);
     
     })
 
 }
+
 //generate random rgb type color 
 function generateColor(){
     const randNum=Math.floor(Math.random()*0xFFFFFF);
@@ -128,9 +139,11 @@ function generateColor(){
 
 function setColor(color,elem){
     if(color==='rgb'){
+        //set color to randomly generated
         elem.style.backgroundColor=generateColor();
     }
     else if(color==='eraser'){
+        //set cell color to white
          elem.style.backgroundColor=ERASER_COLOR;
     }
     else{
@@ -139,6 +152,7 @@ function setColor(color,elem){
     
 
 }
+
 function toggleBorders(){
     let cells =document.querySelectorAll('#container .row div');
         
