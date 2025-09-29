@@ -1,4 +1,4 @@
-const FIELD_SIZE=540
+const FIELD_SIZE=440
 const ERASER_COLOR='white'
 
 const cont=document.querySelector('#container')

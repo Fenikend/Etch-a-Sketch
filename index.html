@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Etch a Sketch</title>
 </head>
 <body>
-    <h1>ETCH-A-SKETCH</h1>
-    <div class="container" id="container"></div>
-    <p id="dimensions"></p>
-    <input 
-    type="range"
-    id="grid-input"
-    value="16"
-    name="dimensions"
-    min="16"
-    max="64"
-    step="1"
-    >
-    <label for="dimensions">Dimensions</label>
-    <div class="buttons" id="buttons">
-        <!-- stylish class is a placeholder for buttons styling-->
-        <button class='stylish active'id="black-button">BLACK</button>
-        <button class='stylish'id="rgb-button">RGB</button>
-        <button class='stylish'id="eraser-button">Eraser</button>
+    <div class="gameboy-shell">
+        <h1>ETCH-A-SKETCH</h1>
+        <div class="container" id="container"></div>
+        <p id="dimensions"></p>
+        <input 
+        type="range"
+        id="grid-input"
+        value="16"
+        name="dimensions"
+        min="16"
+        max="64"
+        step="1"
+        >
+        <label for="dimensions"></label>
+        <div class="gameboy-controller">
+            <input type="color" class="color-palette" id="color-palette">
+            <div class="buttons" id="buttons">
+                <!-- stylish class is a placeholder for buttons styling-->
+                <button class='stylish'id="rgb-button">RGB</button>
+                <button class='stylish'id="eraser-button">Eraser</button>
+                <button id="reset">RESET</button>
+                <button id="borders">toggle borders</button>
+            </div>
+            
+        </div>
+    
     </div>
-    <button id="reset">RESET</button>
-    <input type="color" class="color-palette" id="color-palette">
-    <button id="borders">toggle borders</button>
     <script src="main.js"></script>
 </body>
 </html>
