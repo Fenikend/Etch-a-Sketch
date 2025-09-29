@@ -21,9 +21,16 @@ body{
     display:flex;
     width: 500px;
     flex-direction: column;
-     justify-content: center;
+    justify-content: center;
     align-items: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.gameboy-controller{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-left: 60px;
+    padding-top: 10px;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0; 
@@ -33,14 +40,11 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 50%; 
   border: none; 
 }
-.gameboy-controller{
-    display: flex;
-    flex-direction: row;
-}
+
 .container{
     display: flex;
     flex-direction: column;
-    border: 5px solid blue;
+    border: 2px solid black;
     width: 440px;
     height: 440px;
     user-select: none;
@@ -67,4 +71,18 @@ input[type="color"]::-webkit-color-swatch {
 }
 #add{
     flex-grow: 0;
+}
+
+button{
+    border-radius: 4px;
+    padding: 4px;
+    color: white;
+    background-color: #000000ff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+
 }

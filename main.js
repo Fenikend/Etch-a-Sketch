@@ -5,7 +5,7 @@ const cont=document.querySelector('#container')
 const btnInput=document.querySelector('#grid-input')
 const resetBtn=document.querySelector('#reset')
 const dimCont=document.querySelector('#dimensions')
-const colorButtons=document.querySelectorAll('#buttons button')
+const colorButtons=document.querySelectorAll('#color-buttons button')
 const colorPalette=document.querySelector('#color-palette')
 const eraseButton=document.querySelector('#eraser-button')
 const borderButton=document.querySelector('#borders')
@@ -15,7 +15,7 @@ colorPalette.addEventListener("input", putColor, false);
 colorPalette.addEventListener("change", putColor, false);
 
 //event listener to assure that if we chosen some color buttons will be inactive
-colorPalette.addEventListener('input',()=>{
+colorPalette.addEventListener('click',()=>{
         colorButtons.forEach((b)=>b.classList.remove('active'))
 })
 
@@ -35,9 +35,13 @@ borderButton.addEventListener('click',()=>{
 //check every button class and change color based on it(rgb,eraser)
 colorButtons.forEach((btn)=>{
     btn.addEventListener('click',()=>{
-        colorButtons.forEach((b)=>b.classList.remove('active'))
-        btn.classList.add('active')
-        colorPalette.value=''
+        if (btn.classList.contains('active')){
+            btn.classList.remove('active')
+        }
+        else{
+            colorButtons.forEach((b)=>b.classList.remove('active'))
+            btn.classList.add('active')
+        }
     })
     
     
@@ -62,9 +66,6 @@ function setupField(){
         toggleBorders()
     }
 }
-
-
-
 
 function getColor(){
     let color
