@@ -16,9 +16,9 @@ body{
 .gameboy-shell{
     background: #B5B4B2;
     background: linear-gradient(90deg, rgba(181, 180, 178, 1) 0%, rgba(222, 222, 211, 1) 50%, rgba(214, 214, 212, 1) 100%);
-    padding: 10px 20px 0 20px;
+    padding: 10px 20px 20px 20px;
     
-    padding-bottom: 30px;
+    
     border-radius: 2%;
     display:flex;
     width: 500px;
