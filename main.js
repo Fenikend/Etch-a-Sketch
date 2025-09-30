@@ -93,7 +93,7 @@ function getGridSize(){
 }
 
 function setField(val){
-    dimCont.textContent=`${val}X${val}`;
+    dimCont.textContent=`${val}x${val}`;
     let size=Math.ceil(FIELD_SIZE/val)
     
     for(let i=0;i<val;i++){
