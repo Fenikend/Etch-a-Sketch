@@ -6,7 +6,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    padding-top:2px;
     background: #00B4DB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -16,7 +16,9 @@ body{
 .gameboy-shell{
     background: #B5B4B2;
     background: linear-gradient(90deg, rgba(181, 180, 178, 1) 0%, rgba(222, 222, 211, 1) 50%, rgba(214, 214, 212, 1) 100%);
-    padding: 20px;
+    padding: 10px 20px 0 20px;
+    
+    padding-bottom: 30px;
     border-radius: 2%;
     display:flex;
     width: 500px;
@@ -31,6 +33,7 @@ body{
     width: 100%;
     padding-left: 60px;
     padding-top: 10px;
+    position: relative;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0; 
@@ -40,6 +43,36 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 50%; 
   border: none; 
 }
+input[type="range"]{
+  -webkit-appearance: none; 
+  appearance: none; 
+  width: 70%; 
+  background: transparent; 
+  padding-top: 20px;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    background-color: #DFEEF7;
+    border: 1px solid #7c7b7be4;
+    height:10px;
+    border-radius: 4px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ad5389;
+    background: linear-gradient(
+        0deg,
+        rgba(77, 54, 208, 1) 0%,
+        rgba(132, 116, 254, 1) 100%
+    );
+    height: 40px; 
+    width: 20px; 
+    border: 1px #007bff solid;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: -15px; 
+   
+  }
 
 .container{
     display: flex;
@@ -49,6 +82,7 @@ input[type="color"]::-webkit-color-swatch {
     height: 440px;
     user-select: none;
     background-color: white;
+    margin-bottom: 5px;
 }
 .row{
     display: flex;
@@ -61,13 +95,18 @@ input[type="color"]::-webkit-color-swatch {
     -webkit-user-drag: none;
 }
 .color-palette{
+    margin-top: 20px;
     border: none;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     border-radius: 100%;
 }
 .active{
-    background-color: aquamarine;
+    transform: translateY(2px) scale(0.98);
+    background-color: #272526; 
+    box-shadow: inset -2px -2px 4px -1px #fcf6f660,
+                inset 2px 2px 4px -1px #494949cc,
+                0px 1px 2px 1px #0009;
 }
 #add{
     flex-grow: 0;
@@ -77,12 +116,36 @@ button{
     border-radius: 4px;
     padding: 4px;
     color: white;
-    background-color: #000000ff;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
     border: 0;
-    box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
-    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    background-color: #1D0515;
+    border-radius: 4px;
+    box-shadow: inset 3px 5px 5px -1px #ffffff80, 
+                inset -3px -3px 5px -1px #000, 1px 1px 1px 2px #000c,
+                2.5px 5px 5px 1px #000000e6;
 
 }
+.gameboy-button{
+    max-width: 80px;
+    min-width: 69px;
+}
+.horizontal-buttons{
+    display: flex;
+    flex:0;
+    flex-direction: column;
+    position: absolute;
+    top:25%;
+    right: 20%;
+    gap: 30px;
+}
+.vertical-buttons{
+    display: flex;
+    flex: 0;
+    position: absolute;
+    right:6%;
+    top:48%;
+    gap:90px
+}
+

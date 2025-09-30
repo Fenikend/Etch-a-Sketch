@@ -23,13 +23,15 @@
         <label for="dimensions"></label>
         <div class="gameboy-controller">
             <input type="color" class="color-palette" id="color-palette">
-            <div class="color-buttons" id="color-buttons">
-                <!-- stylish class is a placeholder for buttons styling-->
-                <button class='stylish'id="rgb-button">RGB</button>
-                <button class='stylish'id="eraser-button">Eraser</button>
+            <div class="horizontal-buttons color-buttons" id="color-buttons">
+                <button class='gameboy-button'id="rgb-button">RGB</button>
+                <button class='gameboy-button'id="eraser-button">Eraser</button>
             </div>
-            <button id="reset">RESET</button>
-            <button id="borders">toggle borders</button>
+            <div class="vertical-buttons">
+                <button class="gameboy-button" id="reset">RESET</button>
+                <button class="gameboy-button" id="borders">borders</button>
+            </div>
+         
         </div>
     
     </div>
